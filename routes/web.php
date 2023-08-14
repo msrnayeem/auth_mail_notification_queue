@@ -29,3 +29,25 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+
+//for users
+use App\Http\Controllers\UserController;
+
+Route::group(['prefix' => 'user'], function () {
+    // View all users
+    Route::get('/users-index', [UserController::class, 'index'])->name('user.index');
+    
+    // View a specific user
+    Route::get('/{id}', [UserController::class, 'show'])->name('user.show');
+    
+    // Delete a user
+    Route::delete('/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    
+    // Update a user
+    Route::put('/{id}', [UserController::class, 'update'])->name('user.update');
+
+
+    Route::post('/submit-selected-users', [UserController::class, 'submitSelectedUsers'])->name('submit-selected-users');
+
+});
