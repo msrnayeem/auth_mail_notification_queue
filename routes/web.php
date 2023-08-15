@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,8 +47,12 @@ Route::group(['prefix' => 'user'], function () {
     
     // Update a user
     Route::put('/{id}', [UserController::class, 'update'])->name('user.update');
+    
+});
 
-
-    Route::post('/submit-selected-users', [UserController::class, 'submitSelectedUsers'])->name('submit-selected-users');
-
+Route::group(['prefix' => 'email'], function () {
+    // pass selected users to the compose email view
+    Route::post('/submit-selected-users', [EmailController::class, 'submitSelectedUsers'])->name('submit-selected-users');
+    // send email
+    Route::post('/send-email', [EmailController::class, 'sendEmail'])->name('send-email');;
 });

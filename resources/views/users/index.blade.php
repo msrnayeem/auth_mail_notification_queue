@@ -71,6 +71,10 @@ $(document).ready(function () {
       responsive: true,
       select: true,
       fixedHeader: true,
+      autoWidth: true,
+      select: {
+        style: 'multi' // Enable multiple row selection
+      },
       lengthMenu: [[7, 10, 25, 50, -1], [7, 10, 25, 50, "All"]],
       columnDefs: [
         { orderable: false, targets: 3 }

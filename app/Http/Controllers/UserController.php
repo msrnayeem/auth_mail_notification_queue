@@ -12,15 +12,6 @@ class UserController extends Controller
         $users = User::take(3)->get();
         return view('users.index', compact('users'));
     }
-    public function submitSelectedUsers(Request $request)
-    {
-        $selected = explode(',', $request->input('selectedUserIds'));
-        
-        // Do something with the selectedUserIds, such as updating the database or performing other actions
-        // Example: User::whereIn('id', $selectedUserIds)->update(['status' => 'selected']);
-      //  dd($selected);
-        return response()->json(['message' => 'Selected users have been processed successfully']);
-    }
 
     public function show($id)
     {
